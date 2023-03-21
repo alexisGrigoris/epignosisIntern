@@ -25,8 +25,14 @@
 	  }
 	  .center{
 		margin:5em auto;
+	  }
 
-	
+	  h1{
+		font-size:1.2em;
+	  }
+	  
+	  .errors{
+		color:red;
 	  }
     </style>
     <script
@@ -44,73 +50,77 @@
 			>
 			<div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
 				<div>
-				
+				<h1 class="text-2xl xl:text-3xl font-extrabold">
+					Epignosis School Lib 📚
+				</h1>
 				</div>
 				<div class="mt-12 flex flex-col items-center">
-				<h1 class="text-2xl xl:text-3xl font-extrabold">
-					Complete the form below to sign up at university's Library
+				<h1>
+					Complete the form below to sign up at Epignosis School Library
 				</h1>
 				<div class="w-full flex-1 mt-8">
 					
 
-					<div class="my-12 border-b text-center">
+					<div class="my-12 border-b text-center line">
 				
 					</div>
 
 					
 
 					<div class="mx-auto max-w-xs">
-					<?php include('errors.php'); ?>
-					<input
+						<div class="errors">
+							<?php include('errors.php'); ?>
+						</div>
+						<input
+							class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first"
+							type="name" name="username"
+							placeholder="Username"
+						/>
+						<input
 						class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-						type="name" name="username"
-						placeholder="Username"
-					/>
-					<input
-					class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-						type="email" name="email"
-						placeholder="Email"
-					/>
-					<input
-						class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-						type="password" name="password_1"
-						placeholder="Password"
-					/>
+							type="email" name="email"
+							placeholder="Email"
+						/>
+						<input
+							class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+							type="password" name="password_1"
+							placeholder="Password"
+						/>
 
-					<input
-						class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-						type="password" name="password_2"
-						placeholder="Confirm your password"
-					/>
-					<button
-						class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-						type="submit" 
-						class="btn" 
-						name="reg_user"
-						>
-						
-						<svg
-						class="w-6 h-6 -ml-2"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						>
-						<path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-						<circle cx="8.5" cy="7" r="4" />
-						<path d="M20 8v6M23 11h-6" />
-						</svg>
-						<span class="ml-3">
-						Sign Up
-						</span>
-					</button>
-					<p class="mt-6 text-xs text-gray-600 text-center">
-						Already have an account? 
-						<a href="login.php" class="border-b border-gray-500 border-dotted">
-						Click here to log in
-						</a>
-					</p>
+						<input
+							class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+							type="password" name="password_2"
+							placeholder="Confirm your password"
+						/>
+						<button
+							class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+							type="submit" 
+							class="btn" 
+							name="reg_user"
+							>
+							
+							<svg
+							class="w-6 h-6 -ml-2"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							>
+							<path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+							<circle cx="8.5" cy="7" r="4" />
+							<path d="M20 8v6M23 11h-6" />
+							</svg>
+							<span class="ml-3">
+							Sign Up
+							</span>
+						</button>
+						<p class="mt-6 text-xs text-gray-600 text-center">
+							Already have an account? 
+							<a href="login.php" class="border-b border-gray-500 border-dotted">
+							Click here to log in
+							</a>
+						</p>
 					</div>
 				</div>
 				</div>

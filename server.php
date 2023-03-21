@@ -23,7 +23,7 @@ if (isset($_POST['reg_user'])) {
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($password_1)) { array_push($errors, "Password is required"); }
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "The two passwords did not match. Try again!");
   }
 
   // first check the database to make sure 
@@ -59,7 +59,7 @@ if (isset($_POST['reg_user'])) {
 // LOGIN USER
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+    $password = mysqli_real_escape_string($db, $_POST['password_1']);
   
     if (empty($username)) {
         array_push($errors, "Username is required");
@@ -77,7 +77,7 @@ if (isset($_POST['login_user'])) {
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
         }else {
-            array_push($errors, "Wrong username/password combination");
+            array_push($errors, "Wrong username or password ");
         }
     }
   }
