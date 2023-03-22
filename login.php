@@ -50,12 +50,12 @@
 			<div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
 				<div>
 				<h1 class="text-2xl xl:text-3xl font-extrabold">
-					Epignosis School Lib 📚
+					Epignosis Lib 📚
 				</h1>
 				</div>
 				<div class="mt-12 flex flex-col items-center">
 				<h1>
-					Complete the form below to sign up at Epignosis School Library
+					Fill in your credentials to log in at Epignosis Library!
 				</h1>
 				
 				<div class="w-full flex-1 mt-8">
@@ -103,7 +103,7 @@
 						<path d="M20 8v6M23 11h-6" />
 						</svg>
 						<span class="ml-3">
-						Sign Up
+						Login
 						</span>
 					</button>
 					<p class="mt-6 text-xs text-gray-600 text-center">

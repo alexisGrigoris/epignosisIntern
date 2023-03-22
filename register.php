@@ -51,12 +51,12 @@
 			<div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
 				<div>
 				<h1 class="text-2xl xl:text-3xl font-extrabold">
-					Epignosis School Lib 📚
+					Epignosis Lib 📚
 				</h1>
 				</div>
 				<div class="mt-12 flex flex-col items-center">
 				<h1>
-					Complete the form below to sign up at Epignosis School Library
+					Complete the form below to sign up at Epignosis  Library
 				</h1>
 				<div class="w-full flex-1 mt-8">
 					
