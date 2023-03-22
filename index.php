@@ -68,20 +68,22 @@
 		text-decoration:none;
 	}
 
-	.last{
-		float:right;
+	a{
+		color:black;
 	}
 	
+	a:hover{
+		color:none;
+	}
 	.icon{
 		height:3vh;
 		width:3vh;
 	}
 
 	.flex{
-		display: flex;
-
-
-  	
+	display: block;
+	margin-right:0;
+	float:left;
 		
 	}
 	</style>
@@ -94,15 +96,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav flex">
+    <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php">Home</a>
       <a class="nav-item nav-link" href="books.php">Books grid 📚</a>
 	
 	
 	  
     </div>
-	<a class="nav-item nav-link user" href="#"> <img src="profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
-	<a class="btn btn-outline-success my-2 my-sm-0 last" href="index.php?logout='1'">Logout</a>
+	<div class="flex">
+	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
+	<a class="btn btn-outline-success my-2 my-sm-0 flex" href="index.php?logout='1'">Logout</a>
+	</div>
   </div>
  
 </nav>
