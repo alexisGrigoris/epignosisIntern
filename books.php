@@ -143,9 +143,9 @@ margin:0.2em auto;
 
 .borrow{
   width:100%;
-
-
 }
+
+
 /* Responsive layout - makes a one column-layout instead of a two-column layout */
 @media (max-width: 1200px) {
   .flex-item{
@@ -159,6 +159,15 @@ margin:0.2em auto;
 }
 nav{
   background-color:white;
+}
+
+.lightblue{
+  border-color:#91ccec;
+  color:#91ccec;
+}
+.lightblue:hover{
+  background-color:#91ccec;
+  border-color:#91ccec;
 }
     </style>
 </head>
@@ -177,7 +186,7 @@ nav{
     </div>
 	<div class="flex">
 	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
-	<a class="btn btn-outline-success my-2 my-sm-0 flex" href="index.php?logout='1'">Logout</a>
+	<a class="btn btn-outline-success my-2 my-sm-0 flex lightblue" href="index.php?logout='1'">Logout</a>
 	</div>
   </div>
  

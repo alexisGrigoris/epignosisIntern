@@ -64,7 +64,7 @@
 		color:white;	
 	}
 	.bold:hover{
-		color:cyan;
+		color:#91ccec;;
 		text-decoration:none;
 	}
 
