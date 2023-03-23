@@ -99,7 +99,8 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php">Home</a>
       <a class="nav-item nav-link" href="books.php">Book list 📚</a>
-	
+	  <a class="nav-item nav-link" href="mybooks.php">My books 📚</a>
+
 	
 	  
     </div>
