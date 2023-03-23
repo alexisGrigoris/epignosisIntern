@@ -9,7 +9,7 @@
         <title>Product List and Grid View</title>
     <style>
       body{
-        background-color:#fff5d7;
+        background:url("books.png");
       }
         *{
           box-sizing: border-box;
@@ -75,19 +75,17 @@ padding:0.3em 1.2em;
 border:0.16em solid rgba(255,255,255,0);
 border-radius:2em;
 box-sizing: border-box;
-text-decoration:none;
-font-family:'Roboto',sans-serif;
-font-weight:300;
 color:#FFFFFF;
 text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
 text-align:center;
 transition: all 0.2s;
 width:30%;
 margin:1em 0;
+background-color:#91ccec;
 
 }
 .button4:hover{
-border-color: rgba(255,255,255,1);
+font-size:larger;
 }
 @media all and (max-width:30em){
 .button4{
@@ -101,16 +99,21 @@ margin:0.2em auto;
   display: flex;
   flex-wrap: wrap;
   font-size: 1em;
+ 
   
 }
 
 
 .flex-item{
   padding: 1em;
-  flex: 33%;
+  flex: 30%;
   display: flex;
   flex-wrap: wrap;
-  border:1px solid black;
+  background-color:white;
+  box-shadow: 5px 10px 8px 10px white;
+  border-radius: 1em;
+
+  margin:1em;
   
 }
 
@@ -212,7 +215,7 @@ echo '
                 </div>
                 </div>
                 <div class="borrow">
-                <button class="button4" style="background-color:#84f14e" > Borrow </button>
+                <button class="button4" style="background-color:##91ccec" > Borrow </button>
                 </div>
 
           </div>
