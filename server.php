@@ -29,8 +29,8 @@ if (isset($_POST['reg_user'])) {
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
-  $result = mysqli_query($db, $user_check_query);
-  $user = mysqli_fetch_assoc($result);
+  $reg_result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($reg_result);
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
@@ -70,8 +70,8 @@ if (isset($_POST['login_user'])) {
     if (count($errors) == 0) {
         $password = md5($password);
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-        $results = mysqli_query($db, $query);
-        if (mysqli_num_rows($results) == 1) {
+        $log_result = mysqli_query($db, $query);
+        if (mysqli_num_rows($log_result) == 1) {
           $_SESSION['username'] = $username;
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
@@ -81,4 +81,25 @@ if (isset($_POST['login_user'])) {
     }
   }
   
+//BORROW BOOKS BUTTON
+if(isset($_POST['borrow'])) {
+
+  $title = $_POST['title'];
+  $username = $_SESSION['username'];
+  $img = $_POST['img'];
+  $copies = $_POST['copies'];
+
+  $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE name = '$title' AND img = '$img'");
+  $try = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
+
+
+if(mysqli_num_rows($borrowed_books)> 0){
+  $message[] = 'product already added to cart!';
+}else{
+  mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, name, img) VALUES('$username', '$title', '$img')") or die('query failed');
+  $message[] = 'product added to cart!';
+}
+
+};
+
   ?>

@@ -1,5 +1,6 @@
 <?php 
-  session_start(); 
+include 'server.php';
+ 
 
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -10,6 +11,7 @@
   	unset($_SESSION['username']);
   	header("location: login.php");
   }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,25 +39,15 @@
 		height:40px;
 		width:35px;
 	}
-	.logout{
-		
-		margin-left:100%;
-		background-color:blue;
-		padding:1em;
-	}
 	
 	.msg{
 		width: 80%;
 		text-align:center;
 	}
 
-	.opacity{
-		opacity: 10%;
-	}
-
+	
 
 	.flex{
-	
 		margin:auto;
 	}
 
@@ -63,6 +55,7 @@
 		font-size:larger;
 		color:white;	
 	}
+	
 	.bold:hover{
 		color:#91ccec;;
 		text-decoration:none;

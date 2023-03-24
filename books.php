@@ -69,13 +69,17 @@
 	float:left;	
 	}
 
+  .borrow{
+  height:100%;
+  width:100%;
+}
   .borrow-btn{
     color: black;
     background-color: white;
     display: inline-block;
     text-decoration: none;
-    padding: 10px 25px;
-    margin: 5% auto;
+    padding: 0.9em 2em;
+    margin-top:5%;
     border-radius: 1em;
 }
 
@@ -94,41 +98,33 @@ margin:0.2em auto;
   margin:0 5%;
   display: flex;
   flex-wrap: wrap;
-  font-size: 1em;
- 
-  
 }
 
 
 .flex-item{
-  padding: 1em;
-  flex: 30%;
+  padding: 0.1em;
+  flex: 22%;
   display: flex;
   flex-wrap: wrap;
   background-color:white;
   box-shadow: 5px 10px 8px 10px white;
   border-radius: 1em;
   margin:1em;
-  
 }
 
 .split{
   flex: 50%;
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .book-cover{
   font-size:3em;
-
 }
 
 .book-details{
   padding:1em;
   width:50%;
-
-
 }
 
 .book-img{
@@ -136,11 +132,7 @@ margin:0.2em auto;
   width:5em;
 }
 
-.borrow{
-  height:100%;
-  width:100%;
-  margin:auto;
-}
+
 
 .author{
   font-size:18px;
@@ -201,14 +193,7 @@ nav{
   background-color:white;
 }
 
-.lightblue{
-  border-color:#91ccec;
-  color:#91ccec;
-}
-.lightblue:hover{
-  background-color:#91ccec;
-  border-color:#91ccec;
-}
+
     </style>
 </head>
 <body>
@@ -228,11 +213,18 @@ nav{
 	<div class="flex">
 
 	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >  <?php echo $_SESSION['username']; ?> </a>
-	<a class="btn btn-outline-success my-2 my-sm-0 flex lightblue" href="index.php?logout='1'">Logout</a>
+	<a class="btn btn-outline-success my-2 my-sm-0 flex " href="index.php?logout='1'">Logout</a>
 	</div>
   </div>
  
 </nav>
+<?php
+if(isset($message)){
+   foreach($message as $message){
+      echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
+   }
+}
+?>
 <section>
 
 
@@ -241,6 +233,8 @@ nav{
 
 </section>
     <div class="flex-container">
+    
+    
     <?php
 
 
@@ -255,6 +249,7 @@ if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo '
+        <form method="POST"  class="flex-container flex-item"action="">
           <div class="flex-item">
                 <div class="split">
                 <div class="book-cover">
@@ -265,14 +260,18 @@ echo '
                   <p class="inline"> Author : </p> <p class="author"> ', $row["author"],'</p> <br>
                   <p class="inline"> Book type : </p><p class="type"> ', $row["type"],'</p> <br>
                  <p class="inline">No. of copies : </p> <p class="copies">  ', $row["copies"],'</p>
+                 <input  type ="hidden" name="title" value="',$row["title"] ,'"> 
+                 <input  type ="hidden" name="img" value="',$row["img"] ,'"> 
+                 <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
+
                 </div>
                 </div>
                 <div class="borrow">
-                <button class="borrow-btn " style="background-color:##91ccec" > Borrow </button>
+                <button type="submit" class="borrow-btn" name="borrow" style="background-color:##91ccec" > Borrow </button>
                 </div>
 
           </div>
-
+        </form>
 ';
 }
 echo " </table> ";
