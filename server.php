@@ -91,21 +91,25 @@ if(isset($_POST['borrow'])) {
   $book_id = $_POST['id'];
 
 
+
   $books =  mysqli_query($db, "SELECT * FROM `ebooks` WHERE id = '$book_id'");
-  $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE name = '$title'");
+  $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
   $users = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
   
 
+  $now = time(); //current timestamp
 
 
-  if(mysqli_num_rows($borrowed_books) >0){
-  $message[] = 'Book already borrowed';
+  if(mysqli_num_rows($borrowed_books) >= 3 ){
+  $message[] = 'You can only borrow up to 3 books';
 }else{
-  mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, book_id, name) VALUES('$username', '$book_id','$title')") or die('query failed');
-  $added_book_msg[] = $title;
+  mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, book_id, book_name, borrow_time ) VALUES('$username', '$book_id','$title', '$now')") or die('query failed');
+  $added_book_msg[] = date('Y-m-d H:i:s', $now). " ". $title;//A date like 2021-01-10
 }
 
 
 };
+
+
 
   ?>

@@ -140,7 +140,7 @@ margin:0.2em auto;
 .inline{
   display:inline-block;
 }
-
+ 
 
 
 .type{
@@ -256,7 +256,9 @@ if ($conn->connect_error) {
   }
 $sql = "SELECT id, title, author, type, img, copies FROM ebooks";
 
+
 $result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
@@ -276,8 +278,6 @@ echo '
                  <input  type ="hidden" name="img" value="',$row["img"] ,'"> 
                  <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
                  <input  type ="hidden" name="id" value="',$row["id"] ,'"> 
-                
-
                 </div>
                 </div>
                 <div class="borrow">
@@ -292,6 +292,9 @@ echo " </table> ";
 } else { echo "0 results"; }
 $conn->close();
 ?>  
+
+
+
 </div>
 
 

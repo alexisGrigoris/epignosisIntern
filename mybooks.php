@@ -68,5 +68,25 @@ nav{
   </div>
  
 </nav>
+
+
+<?php
+$conn = mysqli_connect("localhost", "root", "", "epignosis-library");
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books`");
+
+if (mysqli_num_rows($borrowed_books) > 0) {
+// output data of each row
+while($row = $borrowed_books->fetch_assoc()) {
+echo "<tr><td>" . $row["id"]. "</td><td>" . $row["user_id"] . "</td><td>"
+. $row["book_name"]. "</td></tr>";
+}
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+?>
 </body>
 </html>
