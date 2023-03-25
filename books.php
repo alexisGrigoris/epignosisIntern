@@ -20,26 +20,21 @@
           padding:0px;
 }
 
-.epig{
-		height:40px;
-		width:35px;
-	}
-	.logout{
-		
-		margin-left:100%;
-		background-color:blue;
-		padding:1em;
-	}
+  .epig{
+      height:40px;
+      width:35px;
+    }
+    .logout{
+      
+      margin-left:100%;
+      background-color:blue;
+      padding:1em;
+    }
 	
 	.msg{
 		width: 80%;
 		text-align:center;
 	}
-
-	.opacity{
-		opacity: 10%;
-	}
-
 
 	.bold{
 		font-size:larger;
@@ -87,6 +82,8 @@
     background-color: #252525;
     color:#fff;
 }
+
+
 @media all and (max-width:30em){
 .borrow-btn{
 display:block;
@@ -193,6 +190,14 @@ nav{
   background-color:white;
 }
 
+.msg{
+  font-size:Larger;
+  font-weight:bold;
+  text-decoration:underline;
+  color:red;
+
+  margin:auto;
+}
 
     </style>
 </head>
@@ -218,16 +223,22 @@ nav{
   </div>
  
 </nav>
+
+<section>
+
 <?php
 if(isset($message)){
    foreach($message as $message){
-      echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
+    echo '<div class="message" onclick="this.remove();"> <p class="msg"> '.$message .' </p></div>';
+  }
+}
+
+if(isset($added_book_msg)){
+   foreach($added_book_msg as $added_book_msg){
+      echo '<div class="message" onclick="this.remove();"> <p class="msg"> '.$added_book_msg .' was added to your borrowed books list. </p></div>';
    }
 }
 ?>
-<section>
-
-
 <h1>Below you can find a list of books which are available for you to borrow!</h1>
 
 
@@ -243,7 +254,8 @@ $conn = mysqli_connect('localhost', 'root', '', 'epignosis-library');
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
   }
-$sql = "SELECT title, author, type, img,  copies FROM ebooks";
+$sql = "SELECT id, title, author, type, img, copies FROM ebooks";
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
@@ -263,6 +275,8 @@ echo '
                  <input  type ="hidden" name="title" value="',$row["title"] ,'"> 
                  <input  type ="hidden" name="img" value="',$row["img"] ,'"> 
                  <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
+                 <input  type ="hidden" name="id" value="',$row["id"] ,'"> 
+                
 
                 </div>
                 </div>

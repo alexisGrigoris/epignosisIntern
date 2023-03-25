@@ -1,5 +1,6 @@
 <?php
 session_start();
+ini_set('memory_limit', '1024M'); // or you could use 1G
 
 // initializing variables
 $username = "";
@@ -86,19 +87,24 @@ if(isset($_POST['borrow'])) {
 
   $title = $_POST['title'];
   $username = $_SESSION['username'];
-  $img = $_POST['img'];
   $copies = $_POST['copies'];
-
-  $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE name = '$title' AND img = '$img'");
-  $try = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
+  $book_id = $_POST['id'];
 
 
-if(mysqli_num_rows($borrowed_books)> 0){
-  $message[] = 'product already added to cart!';
+  $books =  mysqli_query($db, "SELECT * FROM `ebooks` WHERE id = '$book_id'");
+  $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE name = '$title'");
+  $users = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
+  
+
+
+
+  if(mysqli_num_rows($borrowed_books) >0){
+  $message[] = 'Book already borrowed';
 }else{
-  mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, name, img) VALUES('$username', '$title', '$img')") or die('query failed');
-  $message[] = 'product added to cart!';
+  mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, book_id, name) VALUES('$username', '$book_id','$title')") or die('query failed');
+  $added_book_msg[] = $title;
 }
+
 
 };
 

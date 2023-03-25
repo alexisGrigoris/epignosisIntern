@@ -35,11 +35,6 @@ include 'server.php';
 	background-size: cover;
 	}
 
-	.epig{
-		height:40px;
-		width:35px;
-	}
-	
 	.msg{
 		width: 80%;
 		text-align:center;
@@ -47,10 +42,7 @@ include 'server.php';
 
 	
 
-	.flex{
-		margin:auto;
-	}
-
+	
 	.bold{
 		font-size:larger;
 		color:white;	
@@ -68,6 +60,23 @@ include 'server.php';
 	a:hover{
 		color:none;
 	}
+	
+	body{
+        background-color:grey;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .epig{
+      height:40px;
+      width:35px;
+    }
+
+    .logout{  
+      margin-left:100%;
+      background-color:blue;
+      padding:1em;
+    }
+	
 	.icon{
 		height:3vh;
 		width:3vh;
@@ -75,10 +84,15 @@ include 'server.php';
 
 	.flex{
 	display: block;
+  margin:auto;
 	margin-right:0;
-	float:left;
-		
+	float:left;	
 	}
+
+nav{
+  background-color:white;
+}
+
 	</style>
 </head>
 <body>
