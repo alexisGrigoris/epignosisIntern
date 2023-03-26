@@ -61,15 +61,14 @@ if (isset($_GET['logout'])) {
 			
       /* font-styles */
 
-      .bold{
-        font-size:larger;
-        color:white;	
-      }
-      .bold:hover{
-        color:cyan;
-        text-decoration:none;
-      }
-      
+            a{
+          color:black;
+        }
+        
+            a:hover{
+          color:none;
+        }
+        
       .author, .type, .copies,  .title{
         font-weight:bold;
         display:inline-block;
@@ -213,7 +212,7 @@ if (isset($_GET['logout'])) {
     </div>
 	<div class="flex">
 
-	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >  <?php echo $_SESSION['username']; ?> </a>
+	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
 	<a class="btn btn-outline-success my-2 my-sm-0 flex " href="index.php?logout='1'">Logout</a>
 	</div>
   </div>
