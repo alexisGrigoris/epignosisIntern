@@ -50,7 +50,7 @@
 			<div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
 				<div>
 				<h1 class="text-2xl xl:text-3xl font-extrabold">
-					Epignosis Lib 📚
+					Epignosis Library 📚
 				</h1>
 				</div>
 				<div class="mt-12 flex flex-col items-center">

@@ -3,7 +3,8 @@ session_start();
 ini_set('memory_limit', '1024M'); // or you could use 1G
 
 // initializing variables
-
+$username = "";
+$password = "";
 $errors = array(); 
 
 //connect to the database
@@ -76,7 +77,7 @@ if (isset($_POST['login_user'])) {
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
         }else {
-            header('location: login.php');
+           
             array_push($errors, "Wrong username or password ");
         }
     }
@@ -88,6 +89,7 @@ if (isset($_POST['login_user'])) {
 //Borrow Books Button
 if(isset($_POST['borrow'])) {
 
+  
   $title = $_POST['title'];
   $username = $_SESSION['username'];
   $copies = $_POST['copies'];
@@ -96,7 +98,7 @@ if(isset($_POST['borrow'])) {
 
   $books =  mysqli_query($db, "SELECT * FROM `ebooks` WHERE id = '$book_id'");
   $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
-  $users = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
+  $users = mysqli_query($db, "SELECT * FROM users WHERE username='$username'");
 
   
 
