@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Εξυπηρετητής: 127.0.0.1
--- Χρόνος δημιουργίας: 26 Μαρ 2023 στις 04:52:06
+-- Χρόνος δημιουργίας: 26 Μαρ 2023 στις 19:27:38
 -- Έκδοση διακομιστή: 10.4.27-MariaDB
 -- Έκδοση PHP: 8.0.25
 
@@ -34,13 +34,6 @@ CREATE TABLE `borrowed-books` (
   `book_name` varchar(100) NOT NULL,
   `borrow_time` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Άδειασμα δεδομένων του πίνακα `borrowed-books`
---
-
-INSERT INTO `borrowed-books` (`conn_id`, `user_id`, `book_id`, `book_name`, `borrow_time`) VALUES
-(161, 'alex', 1, 'Gilead', '1679798671');
 
 -- --------------------------------------------------------
 
@@ -167,21 +160,7 @@ INSERT INTO `ebooks` (`id`, `title`, `author`, `type`, `img`, `copies`) VALUES
 (124, 'Island', 'Aldous Huxley', 'Fiction', 'http://books.google.com/books/content?id=MB3VSMgJ5CkC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
 (125, 'A Year in the Life of William Shakespeare', 'James Shapiro', 'Biography & Autobiography', 'http://books.google.com/books/content?id=86bOlwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
 (126, 'Lucy Sullivan Is Getting Married', 'Marian Keyes', 'Fiction', 'http://books.google.com/books/content?id=qLl-3FGhPl0C&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
-(127, 'The Terminal Man', 'Michael Crichton', 'Fiction', 'http://books.google.com/books/content?id=9hERBFsuOcgC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
-(128, '', '', '', '', 0),
-(129, '', '', '', '', 0),
-(130, '', '', '', '', 0),
-(131, '', '', '', '', 0),
-(132, '', '', '', '', 0),
-(133, '', '', '', '', 0),
-(134, '', '', '', '', 0),
-(135, '', '', '', '', 0),
-(136, '', '', '', '', 0),
-(137, '', '', '', '', 0),
-(138, '', '', '', '', 0),
-(139, '', '', '', '', 0),
-(140, '', '', '', '', 0),
-(141, '', '', '', '', 0);
+(127, 'The Terminal Man', 'Michael Crichton', 'Fiction', 'http://books.google.com/books/content?id=9hERBFsuOcgC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5);
 
 -- --------------------------------------------------------
 
@@ -233,7 +212,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT για πίνακα `borrowed-books`
 --
 ALTER TABLE `borrowed-books`
-  MODIFY `conn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `conn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
 -- AUTO_INCREMENT για πίνακα `ebooks`
@@ -245,7 +224,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT για πίνακα `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
