@@ -31,10 +31,6 @@
       padding:1em;
     }
 	
-	.msg{
-		width: 80%;
-		text-align:center;
-	}
 
 	.bold{
 		font-size:larger;
@@ -104,35 +100,32 @@ margin:0.2em auto;
   display: flex;
   flex-wrap: wrap;
   background-color:white;
-  box-shadow: 5px 10px 8px 10px white;
   border-radius: 1em;
   margin:1em;
+  width:30em;
 }
 
 .split{
   flex: 50%;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .book-cover{
-  font-size:3em;
+  font-size:2em;
 }
 
 .book-details{
   padding:1em;
-  width:50%;
+  width:70%;
 }
 
 .book-img{
-  height:7em;
-  width:5em;
+  height:8em;
+  width:6em;
 }
 
 
-
-.author{
-  font-size:18px;
+.author, .type, .copies,  .title{
   font-weight:bold;
   display:inline-block;
 }
@@ -141,21 +134,17 @@ margin:0.2em auto;
   display:inline-block;
 }
  
-
-
 .type{
   font-size:16px;
-  font-weight:bold;
-  display:inline-block;
-
 }
 
 .copies{
   font-size:14px;
-  font-weight:bold;
-  display:inline-block;
 }
 
+.author{
+  font-size:18px;
+}
 
 .title{
   font-size:28px;
@@ -165,11 +154,10 @@ margin:0.2em auto;
 
 
 section{
-  padding:5em 0;
+  padding:3em 0;
   background-color:white;
   margin:1em 6%;
   text-align:center;
-  box-shadow: 5px 10px 8px 10px white;
   border-radius: 1em;
 
 }
@@ -195,8 +183,8 @@ nav{
   font-weight:bold;
   text-decoration:underline;
   color:red;
-
   margin:auto;
+
 }
 
     </style>
@@ -272,12 +260,12 @@ echo '
                 <div class="book-details">
                   <p class = "title">', $row["title"],'</p>
                   <p class="inline"> Author : </p> <p class="author"> ', $row["author"],'</p> <br>
-                  <p class="inline"> Book type : </p><p class="type"> ', $row["type"],'</p> <br>
+                  <p class="inline"> Author : </p> <p class="type"> ', $row["type"],'</p> <br>
                  <p class="inline">No. of copies : </p> <p class="copies">  ', $row["copies"],'</p>
                  <input  type ="hidden" name="title" value="',$row["title"] ,'"> 
-                 <input  type ="hidden" name="img" value="',$row["img"] ,'"> 
                  <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
                  <input  type ="hidden" name="id" value="',$row["id"] ,'"> 
+                 
                 </div>
                 </div>
                 <div class="borrow">

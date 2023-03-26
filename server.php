@@ -82,25 +82,26 @@ if (isset($_POST['login_user'])) {
     }
   }
   
-//BORROW BOOKS BUTTON
+//Borrow Books Button
 if(isset($_POST['borrow'])) {
 
   $title = $_POST['title'];
   $username = $_SESSION['username'];
   $copies = $_POST['copies'];
   $book_id = $_POST['id'];
-
-
+ 
 
   $books =  mysqli_query($db, "SELECT * FROM `ebooks` WHERE id = '$book_id'");
   $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
   $users = mysqli_query($db, "SELECT * FROM 'users' WHERE username='$username'");
+
   
 
   $now = time(); //current timestamp
-
-
-  if(mysqli_num_rows($borrowed_books) >= 3 ){
+  if($copies == 0){
+    $message[] = 'This book has no available copies left now. Try again later!';
+  }
+  else if(mysqli_num_rows($borrowed_books) >= 3 ){
   $message[] = 'You can only borrow up to 3 books';
 }else{
   mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, book_id, book_name, borrow_time ) VALUES('$username', '$book_id','$title', '$now')") or die('query failed');
@@ -112,4 +113,11 @@ if(isset($_POST['borrow'])) {
 
 
 
+//Return Books Button
+if(isset($_POST['return'])){
+ 
+  $conn_id = $_POST['conn_id'];
+  mysqli_query($db, "DELETE FROM `borrowed-books` WHERE conn_id = '$conn_id'") or die('query failed');
+  $returned_book_msg[] = 'You returned the book succesfully!';
+}
   ?>

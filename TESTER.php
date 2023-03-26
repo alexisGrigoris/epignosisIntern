@@ -1,68 +1,60 @@
+<?php 
+include 'server.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Creating Dynamic Countdown In PHP, JavaScript- Nicesnippets.com</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Poppins fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
-    <style type="text/css">
-        body{
-            font-family: 'Poppins', sans-serif;
-        }
-        #counter{
-            width: 410px;
-            background: #ff190b;
-            box-shadow: 0px 2px 9px 0px black;
-        }
-    </style>    
+<title>Table with database</title>
+<style>
+table {
+border-collapse: collapse;
+width: 100%;
+color: #588c7e;
+font-family: monospace;
+font-size: 25px;
+text-align: left;
+}
+th {
+background-color: #588c7e;
+color: white;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+</style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12 mt-40">
-                <div class="card" style="height: 400px;">
-                    <div class="card-header text-white text-center bg-success">
-                        <h2>Creating Dynamic Countdown In PHP, JavaScript- Nicesnippets.com</h2>     
-                    </div>
-                    <div class="card-body pt-5">
-                        <h1 id="counter" class="text-center mt-5 m-auto p-3 text-white"></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<table>
+<tr>
+<th>Id</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+<?php
+$conn = mysqli_connect("localhost", "root", "", "epignosis-library");
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$sql = "SELECT * FROM `borrowed-books`";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo '
+<form method="POST"  class="flex-container flex-item"action="">
+<tr><td>' . $row["book_name"]. '</td></tr>
+<input  type ="hidden" name="trythis" value="',$row["book_name"] ,'"> 
 
-    <!-- Script -->
-    <script>
-        <?php 
-           $dateTime = strtotime('+30 days');
-           $getDateTime = date("F d, Y H:i:s", $dateTime); 
-        ?>
-        var countDownDate = new Date("<?php echo "$getDateTime"; ?>").getTime();
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            // Find the distance between now an the count down date
-            var distance = countDownDate - now;
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            // Output the result in an element with id="counter"11
-            document.getElementById("counter").innerHTML = days + "Day : " + hours + "h " +
-            minutes + "m " + seconds + "s ";
-            // If the count down is over, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("counter").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    </script>
+</form>
+';
 
+}
+echo'
+<button type="submit" class="return-btn" style="background-color:##91ccec" > Return Book </button>
+</form>';
+
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+?>
+</table>
 </body>
-</html> 
+</html>
