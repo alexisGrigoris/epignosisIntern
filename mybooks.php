@@ -139,9 +139,6 @@ margin:0.2em auto;
       <a class="nav-item nav-link active" href="index.php">Home</a>
       <a class="nav-item nav-link" href="books.php">Book list 📚</a>
 	  <a class="nav-item nav-link" href="mybooks.php">My books 📚</a>
-
-	
-	  
     </div>
 	<div class="flex">
 	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
@@ -183,11 +180,11 @@ if(isset($returned_book_msg)){
               <p class="bold inline"> ', $row["book_name"],'</p> 
               <p> was borrowed by </p> <p class="bold inline"> ', $row["user_id"],'</p> 
               <p> on : </p> <p class="bold inline">  ',date('Y-m-d H:i:s', $row["borrow_time"]),'</p>
-              <p> book id  </p> <p class="bold inline"> ', $row["book_id"],'</p> 
-
-
               <div class="return">
-                <input  type ="hidden" name="conn_id" value="',$row["conn_id"] ,'"> 
+                <input  type ="hidden" name="conn_id" value="',$row["conn_id"] ,'">
+                <input  type ="hidden" name="book_name" value="',$row["book_name"] ,'"> 
+                <input  type ="hidden" name="book_id" value="',$row["book_id"] ,'"> 
+
                 <button type="submit" class="return-btn" name="return" style="background-color:##91ccec" > Return Book </button>
               </div>
 

@@ -96,12 +96,9 @@ if(isset($_POST['borrow'])) {
   $book_id = $_POST['id'];
  
 
-  $books =  mysqli_query($db, "SELECT * FROM `ebooks` WHERE id = '$book_id'");
   $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
-  $users = mysqli_query($db, "SELECT * FROM users WHERE username='$username'");
 
   
-
   $now = time(); //current timestamp
   if($copies == 0){
     $message[] = 'This book has no available copies left now. Try again later!';
@@ -109,8 +106,11 @@ if(isset($_POST['borrow'])) {
   else if(mysqli_num_rows($borrowed_books) >= 3 ){
   $message[] = 'You can only borrow up to 3 books';
 }else{
+  $copies = $copies - 1;
+  mysqli_query($db, "UPDATE `ebooks` SET `copies`= $copies WHERE id = $book_id") or die('query failed');
   mysqli_query($db, "INSERT INTO `borrowed-books`(user_id, book_id, book_name, borrow_time ) VALUES('$username', '$book_id','$title', '$now')") or die('query failed');
   $added_book_msg[] = date('Y-m-d H:i:s', $now). " ". $title;//A date like 2021-01-10
+
 }
 
 
@@ -118,11 +118,19 @@ if(isset($_POST['borrow'])) {
 
 
 
+
+
 //Return Books Button
 if(isset($_POST['return'])){
+  
  
+  $IncrementValue = 1;
+  $book_name = $_POST['book_name'];
   $conn_id = $_POST['conn_id'];
+  $book_id = $_POST['book_id'];
+
+  mysqli_query($db, "UPDATE `ebooks` SET `copies`= copies +  $IncrementValue  WHERE id = $book_id") or die('query failed');
   mysqli_query($db, "DELETE FROM `borrowed-books` WHERE conn_id = '$conn_id'") or die('query failed');
-  $returned_book_msg[] = 'You returned the book succesfully!';
+  $returned_book_msg[] = 'You returned '. $book_name .' succesfully!';
 }
   ?>

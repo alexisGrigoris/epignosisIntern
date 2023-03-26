@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Εξυπηρετητής: 127.0.0.1
--- Χρόνος δημιουργίας: 26 Μαρ 2023 στις 19:27:38
+-- Χρόνος δημιουργίας: 26 Μαρ 2023 στις 21:14:28
 -- Έκδοση διακομιστή: 10.4.27-MariaDB
 -- Έκδοση PHP: 8.0.25
 
@@ -55,11 +55,11 @@ CREATE TABLE `ebooks` (
 --
 
 INSERT INTO `ebooks` (`id`, `title`, `author`, `type`, `img`, `copies`) VALUES
-(1, 'Gilead', 'Marilynne Robinson', 'Fiction', 'http://books.google.com/books/content?id=KQZCPgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
-(3, 'The One Tree', 'Stephen Donaldson', 'American fiction', 'http://books.google.com/books/content?id=OmQawwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 0),
+(1, 'Gilead', 'Marilynne Robinson', 'Fiction', 'http://books.google.com/books/content?id=KQZCPgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 3),
+(3, 'The One Tree', 'Stephen Donaldson', 'American fiction', 'http://books.google.com/books/content?id=OmQawwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 1),
 (4, 'Rage of angels', 'Sidney Sheldon', 'Fiction', 'http://books.google.com/books/content?id=FKo2TgANz74C&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
-(5, 'The Four Loves', 'Clive Staples Lewis', 'Christian life', 'http://books.google.com/books/content?id=XhQ5XsFcpGIC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
-(6, 'The Problem of Pain', 'Clive Staples Lewis', 'Christian life', 'http://books.google.com/books/content?id=Kk-uVe5QK-gC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
+(5, 'The Four Loves', 'Clive Staples Lewis', 'Christian life', 'http://books.google.com/books/content?id=XhQ5XsFcpGIC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 4),
+(6, 'The Problem of Pain', 'Clive Staples Lewis', 'Christian life', 'http://books.google.com/books/content?id=Kk-uVe5QK-gC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 4),
 (7, 'An Autobiography', 'Agatha Christie', 'Authors, English', 'http://books.google.com/books/content?id=c49GQwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
 (8, 'Empires of the Monsoon', 'Richard Hall', 'Africa, East', 'http://books.google.com/books/content?id=MuPEQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
 (9, 'The Gap Into Madness', 'Stephen R. Donaldson', 'Hyland, Morn (Fictitious character)', 'http://books.google.com/books/content?id=4oXavLNDWocC&printsec=frontcover&img=1&zoom=1&source=gbs_api', 5),
@@ -176,13 +176,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Άδειασμα δεδομένων του πίνακα `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(8, 'User', 'user@user.com', '5cc32e366c87c4cb49e4309b75f57d64');
-
---
 -- Ευρετήρια για άχρηστους πίνακες
 --
 
@@ -212,7 +205,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT για πίνακα `borrowed-books`
 --
 ALTER TABLE `borrowed-books`
-  MODIFY `conn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `conn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT για πίνακα `ebooks`
@@ -224,7 +217,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT για πίνακα `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
