@@ -1,5 +1,5 @@
 <?php 
-include 'server.php';
+include ('server.php');
  
 
   if (!isset($_SESSION['username'])) {
@@ -15,90 +15,96 @@ include 'server.php';
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Home</title>
-	<meta charset="UTF-8">
+	<head>
+		<title>Home</title>
+		<meta charset="UTF-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<style>
-	body,h1 {font-family: "Raleway", sans-serif}
-	body, html {height: 100%}
-	.bgimg {
-	background-image: url('study.jpg');
-	min-height: 100%;
-	margin:0;
-	background-position: center;
-	background-size: cover;
-	}
+		<style>
 
-	.msg{
-		width: 80%;
-		text-align:center;
-	}
+			body,h1 {
+				font-family: 'Roboto', sans-serif;
+			}
 
-	
+			body, html {
+				height: 100%
+			}
 
-	
-	.bold{
-		font-size:larger;
-		color:white;	
-	}
-	
-	.bold:hover{
-		color:#91ccec;;
-		text-decoration:none;
-	}
+			/* nav */
+			
+			.epig{
+				height:40px;
+				width:35px;
+			}
 
-	a{
-		color:black;
-	}
-	
-	a:hover{
-		color:none;
-	}
-	
-	body{
-        background-color:grey;
-        font-family: 'Roboto', sans-serif;
-      }
+			.logout{  
+				margin-left:100%;
+				background-color:blue;
+				padding:1em;
+				}
+				
+			.icon{
+					height:3vh;
+					width:3vh;
+				}
 
-      .epig{
-      height:40px;
-      width:35px;
-    }
+			.flex{
+				display: block;
+				margin:auto;
+				margin-right:0;
+				float:left;	
+				}
 
-    .logout{  
-      margin-left:100%;
-      background-color:blue;
-      padding:1em;
-    }
-	
-	.icon{
-		height:3vh;
-		width:3vh;
-	}
+			nav{
+			background-color:white;
+			}
+			
+			/* main content */
 
-	.flex{
-	display: block;
-  margin:auto;
-	margin-right:0;
-	float:left;	
-	}
+			.bgimg {
+			background-image: url('images/study.jpg');
+			min-height: 100%;
+			margin:0;
+			background-position: center;
+			background-size: cover;
+			}
 
-nav{
-  background-color:white;
-}
+			.msg{
+				width: 80%;
+				text-align:center;
+			}
 
-	</style>
-</head>
+			/* font styles */
+
+			.bold{
+				font-size:larger;
+				color:white;	
+			}
+			
+			.bold:hover{
+				color:#91ccec;;
+				text-decoration:none;
+			}
+
+			a{
+				color:black;
+			}
+			
+			a:hover{
+				color:none;
+			}
+
+
+		</style>
+	</head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-  <a class="navbar-brand" href="#"> 	<img src="epig.png" class="epig"> </img></a>
+  <a class="navbar-brand" href="#"> 	<img src="images/epig.png" class="epig"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -112,7 +118,7 @@ nav{
 	  
     </div>
 	<div class="flex">
-	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
+	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
 	<a class="btn btn-outline-success my-2 my-sm-0 flex" href="index.php?logout='1'">Logout</a>
 	</div>
   </div>

@@ -3,14 +3,13 @@ session_start();
 ini_set('memory_limit', '1024M'); // or you could use 1G
 
 // initializing variables
-$username = "";
-$email    = "";
+
 $errors = array(); 
 
-// connect to the database
+//connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'epignosis-library');
 
-// REGISTER USER
+// Register user
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -56,7 +55,7 @@ if (isset($_POST['reg_user'])) {
 }
 
 
-// LOGIN USER
+// Login user
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password_1']);
@@ -77,10 +76,14 @@ if (isset($_POST['login_user'])) {
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
         }else {
+            header('location: login.php');
             array_push($errors, "Wrong username or password ");
         }
     }
   }
+
+
+
   
 //Borrow Books Button
 if(isset($_POST['borrow'])) {

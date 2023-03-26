@@ -18,12 +18,13 @@
       body {
         font-family: "Inter", sans-serif;
 		margin: 0 auto;
-		
       }
+
 	  form{
 		width:95%;
 		margin: 0 auto;
 	  }
+
 	  .center{
 		margin:5em auto;
 	  }

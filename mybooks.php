@@ -1,4 +1,16 @@
-<?php include('server.php') ?>
+<?php include('server.php');
+
+if (!isset($_SESSION['username'])) {
+  $_SESSION['msg'] = "You must log in first";
+  header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +25,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background:url('study.jpg');
+    background:url('images/study.jpg');
  }
 /* nav */
 .epig{
@@ -118,7 +130,7 @@ margin:0.2em auto;
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light ">
-  <a class="navbar-brand" href="#"> 	<img src="epig.png" class="epig"> </img></a>
+  <a class="navbar-brand" href="#"> 	<img src="images/epig.png" class="epig"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -132,7 +144,7 @@ margin:0.2em auto;
 	  
     </div>
 	<div class="flex">
-	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
+	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >   <?php echo $_SESSION['username']; ?> </a>
 	<a class="btn btn-outline-success my-2 my-sm-0 flex" href="index.php?logout='1'">Logout</a>
 	</div>
   </div>
@@ -152,45 +164,41 @@ if(isset($returned_book_msg)){
 
 <div class="flex-container">
 
-<?php
-$conn = mysqli_connect("localhost", "root", "", "epignosis-library");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$username = $_SESSION['username'];
+  <?php
+    $conn = mysqli_connect("localhost", "root", "", "epignosis-library");
+    // Check connection
+      if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+      }
+      $username = $_SESSION['username'];
 
-$borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
+      $borrowed_books =  mysqli_query($db, "SELECT * FROM `borrowed-books` WHERE user_id = '$username'");
 
-if (mysqli_num_rows($borrowed_books) > 0) {
-// output data of each row
-while($row = $borrowed_books->fetch_assoc()) {
-echo '<form method="POST"  class="flex-container flex-item"action="">
-<div class="flex-item">
-<p class="bold inline"> ', $row["book_name"],'</p> 
-<p> was borrowed by </p> <p class="bold inline"> ', $row["user_id"],'</p> 
-<p> on : </p> <p class="bold inline">  ',date('Y-m-d H:i:s', $row["borrow_time"]),'</p>
-<p> book id  </p> <p class="bold inline"> ', $row["book_id"],'</p> 
-
-
-<div class="return">
-<input  type ="hidden" name="conn_id" value="',$row["conn_id"] ,'"> 
-<input  type ="hidden" name="plz" value="',$row["book_id"] ,'"> 
-<button type="submit" class="return-btn" name="return" style="background-color:##91ccec" > Return Book </button>
-</div>
-
-</div>
-</form>
+      if (mysqli_num_rows($borrowed_books) > 0) {
+      // output data of each row
+        while($row = $borrowed_books->fetch_assoc()) {
+        echo '
+          <form method="POST"  class="flex-container flex-item"action="">
+            <div class="flex-item">
+              <p class="bold inline"> ', $row["book_name"],'</p> 
+              <p> was borrowed by </p> <p class="bold inline"> ', $row["user_id"],'</p> 
+              <p> on : </p> <p class="bold inline">  ',date('Y-m-d H:i:s', $row["borrow_time"]),'</p>
+              <p> book id  </p> <p class="bold inline"> ', $row["book_id"],'</p> 
 
 
+              <div class="return">
+                <input  type ="hidden" name="conn_id" value="',$row["conn_id"] ,'"> 
+                <button type="submit" class="return-btn" name="return" style="background-color:##91ccec" > Return Book </button>
+              </div>
 
-';
-}
-
-
-} else { echo ' <p class="bold inline">  You have not borrowed any books! </p>'; }
-$conn->close();
-?>
+            </div>
+          </form>
+        ';
+        }
+      }
+      else { echo ' <p class="bold inline">  You have not borrowed any books! </p>'; }
+    $conn->close();
+  ?>
 
 </div>
 

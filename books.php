@@ -1,7 +1,19 @@
-<?php include('server.php') ?>
+<?php include('server.php');
+
+if (!isset($_SESSION['username'])) {
+  $_SESSION['msg'] = "You must log in first";
+  header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name= "viewport" content="width=device-width, user-scalable=no, initial=scale=1.0, maximun-scale=1.0, minimun-scale=1.0" >
@@ -11,188 +23,184 @@
       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
 
       body{
-        background:url("study.jpg");
+        background:url("images/study.jpg");
         font-family: 'Roboto', sans-serif;
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
       }
-        *{
-          box-sizing: border-box;
-          margin:0px;
-          padding:0px;
-}
-
-  .epig{
-      height:40px;
-      width:35px;
-    }
-    .logout{
       
-      margin-left:100%;
-      background-color:blue;
-      padding:1em;
+			/* nav */
+			
+			.epig{
+				height:40px;
+				width:35px;
+			}
+
+			.logout{  
+				margin-left:100%;
+				background-color:blue;
+				padding:1em;
+				}
+				
+			.icon{
+					height:3vh;
+					width:3vh;
+				}
+
+			.flex{
+				display: block;
+				margin:auto;
+				margin-right:0;
+				float:left;	
+				}
+
+			nav{
+			background-color:white;
+			}
+			
+      /* font-styles */
+
+      .bold{
+        font-size:larger;
+        color:white;	
+      }
+      .bold:hover{
+        color:cyan;
+        text-decoration:none;
+      }
+      
+      .author, .type, .copies,  .title{
+        font-weight:bold;
+        display:inline-block;
+      }
+
+      .inline{
+        display:inline-block;
+      }
+      
+      .type{
+        font-size:16px;
+      }
+
+      .copies{
+        font-size:14px;
+      }
+
+      .author{
+        font-size:18px;
+      }
+
+      .title{
+        font-size:28px;
+        font-weight:900;
+        display:block;
+      }
+
+    /* Borrow book btn */
+
+    .borrow{
+      height:100%;
+      width:100%;
     }
-	
 
-	.bold{
-		font-size:larger;
-		color:white;	
-	}
-	.bold:hover{
-		color:cyan;
-		text-decoration:none;
-	}
-
-	a{
-		color:black;
-	}
-	
-	a:hover{
-		color:none;
-	}
-	.icon{
-		height:3vh;
-		width:3vh;
-	}
-
-	.flex{
-	display: block;
-  margin:auto;
-	margin-right:0;
-	float:left;	
-	}
-
-  .borrow{
-  height:100%;
-  width:100%;
-}
-  .borrow-btn{
-    color: black;
-    background-color: white;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0.9em 2em;
-    margin-top:5%;
-    border-radius: 1em;
-}
-
-.borrow-btn:hover{
-    background-color: #252525;
-    color:#fff;
-}
-
-
-@media all and (max-width:30em){
-.borrow-btn{
-display:block;
-margin:0.2em auto;
+    .borrow-btn{
+      color: black;
+      background-color: white;
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.9em 2em;
+      margin-top:5%;
+      border-radius: 1em;
   }
-}
 
-.flex-container {
-  margin:0 5%;
-  display: flex;
-  flex-wrap: wrap;
-}
+    .borrow-btn:hover{
+        background-color: #252525;
+        color:#fff;
+    }
 
+    /* Main content */
 
-.flex-item{
-  padding: 0.1em;
-  flex: 22%;
-  display: flex;
-  flex-wrap: wrap;
-  background-color:white;
-  border-radius: 1em;
-  margin:1em;
-  width:30em;
-}
+    .flex-container {
+      margin:0 5%;
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-.split{
-  flex: 50%;
-  display: flex;
-}
+    .flex-item{
+      padding: 0.1em;
+      flex: 22%;
+      display: flex;
+      flex-wrap: wrap;
+      background-color:white;
+      border-radius: 1em;
+      margin:1em;
+      width:30em;
+    }
 
-.book-cover{
-  font-size:2em;
-}
+    .split{
+      flex: 50%;
+      display: flex;
+    }
 
-.book-details{
-  padding:1em;
-  width:70%;
-}
+    .book-cover{
+      font-size:2em;
+    }
 
-.book-img{
-  height:8em;
-  width:6em;
-}
+    .book-details{
+      padding:1em;
+      width:70%;
+    }
 
+    .book-img{
+      height:8em;
+      width:6em;
+    }
 
-.author, .type, .copies,  .title{
-  font-weight:bold;
-  display:inline-block;
-}
+    section{
+      padding:3em 0;
+      background-color:white;
+      margin:1em 6%;
+      text-align:center;
+      border-radius: 1em;
 
-.inline{
-  display:inline-block;
-}
- 
-.type{
-  font-size:16px;
-}
+    }
 
-.copies{
-  font-size:14px;
-}
-
-.author{
-  font-size:18px;
-}
-
-.title{
-  font-size:28px;
-  font-weight:900;
-  display:block;
-}
-
-
-section{
-  padding:3em 0;
-  background-color:white;
-  margin:1em 6%;
-  text-align:center;
-  border-radius: 1em;
-
-}
-
-/* Responsive layout - makes a one column-layout instead of a two-column layout */
-@media (max-width: 400px) {
-  .flex-item{
-    flex: 50%;
+      .msg{
+    font-size:Larger;
+    font-weight:bold;
+    text-decoration:underline;
+    color:red;
+    margin:auto;
   }
-}
-@media (max-width: 800px) {
-  .flex-item{
-    flex: 100%;
-  }
-}
 
-nav{
-  background-color:white;
-}
+    /* Responsive layout  */
+    @media (max-width: 400px) {
+      .flex-item{
+        flex: 50%;
+      }
+    }
 
-.msg{
-  font-size:Larger;
-  font-weight:bold;
-  text-decoration:underline;
-  color:red;
-  margin:auto;
+    @media (max-width: 800px) {
+      .flex-item{
+        flex: 100%;
+      }
+    }
 
-}
+    @media all and (max-width:30em){
+    .borrow-btn{
+    display:block;
+    margin:0.2em auto;
+      }
+    }
+
 
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-  <a class="navbar-brand" href="#"> 	<img src="epig.png" class="epig"> </img></a>
+  <a class="navbar-brand" href="#"> 	<img src="images/epig.png" class="epig"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -205,7 +213,7 @@ nav{
     </div>
 	<div class="flex">
 
-	<a class="nav-item nav-link flex " href="#"> <img src="profile.png" class="icon" >  <?php echo $_SESSION['username']; ?> </a>
+	<a class="nav-item nav-link flex " href="#"> <img src="images/profile.png" class="icon" >  <?php echo $_SESSION['username']; ?> </a>
 	<a class="btn btn-outline-success my-2 my-sm-0 flex " href="index.php?logout='1'">Logout</a>
 	</div>
   </div>
@@ -231,62 +239,54 @@ if(isset($added_book_msg)){
 
 
 </section>
-    <div class="flex-container">
-    
+  <div class="flex-container">
     
     <?php
+    $conn = mysqli_connect('localhost', 'root', '', 'epignosis-library');
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+      }
+    $sql = "SELECT id, title, author, type, img, copies FROM ebooks";
+    $result = $conn->query($sql);
 
+    if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+    echo '
+            <form method="POST"  class="flex-container flex-item"action="">
+              <div class="flex-item">
+                    <div class="split">
+                      <div class="book-cover">
+                        <img src="',$row["img"],'" class="book-img">
+                      </div>
+                      <div class="book-details">
 
-$conn = mysqli_connect('localhost', 'root', '', 'epignosis-library');
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-  }
-$sql = "SELECT id, title, author, type, img, copies FROM ebooks";
+                        <p class = "title">', $row["title"],'</p>
+                        <p class="inline"> Author : </p> <p class="author"> ', $row["author"],'</p> <br>
+                        <p class="inline"> Author : </p> <p class="type"> ', $row["type"],'</p> <br>
+                        <p class="inline">No. of copies : </p> <p class="copies">  ', $row["copies"],'</p>
+                        <input  type ="hidden" name="title" value="',$row["title"] ,'"> 
+                        <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
+                        <input  type ="hidden" name="id" value="',$row["id"] ,'"> 
+                        
+                      </div>
+                    </div>
+                    <div class="borrow">
+                      <button type="submit" class="borrow-btn" name="borrow" style="background-color:##91ccec" > Borrow </button>
+                    </div>
 
+              </div>
+            </form>
+    ';
+    }
+    }
+    else { echo "0 results"; }
+    $conn->close();
+    ?>  
 
-$result = $conn->query($sql);
+  </div>
 
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo '
-        <form method="POST"  class="flex-container flex-item"action="">
-          <div class="flex-item">
-                <div class="split">
-                <div class="book-cover">
-                  <img src="',$row["img"],'" class="book-img">
-                </div>
-                <div class="book-details">
-                  <p class = "title">', $row["title"],'</p>
-                  <p class="inline"> Author : </p> <p class="author"> ', $row["author"],'</p> <br>
-                  <p class="inline"> Author : </p> <p class="type"> ', $row["type"],'</p> <br>
-                 <p class="inline">No. of copies : </p> <p class="copies">  ', $row["copies"],'</p>
-                 <input  type ="hidden" name="title" value="',$row["title"] ,'"> 
-                 <input  type ="hidden" name="copies" value="',$row["copies"] ,'"> 
-                 <input  type ="hidden" name="id" value="',$row["id"] ,'"> 
-                 
-                </div>
-                </div>
-                <div class="borrow">
-                <button type="submit" class="borrow-btn" name="borrow" style="background-color:##91ccec" > Borrow </button>
-                </div>
-
-          </div>
-        </form>
-';
-}
-echo " </table> ";
-} else { echo "0 results"; }
-$conn->close();
-?>  
-
-
-
-</div>
-
-
- 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
