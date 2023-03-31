@@ -162,7 +162,7 @@ if(isset($returned_book_msg)){
 <div class="flex-container">
 
   <?php
-    $conn = mysqli_connect("localhost", "root", "", "epignosis-library");
+    $conn = mysqli_connect("localhost", "root", "", "school-library");
     // Check connection
       if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);

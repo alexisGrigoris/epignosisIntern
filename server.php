@@ -8,7 +8,7 @@ $password = "";
 $errors = array(); 
 
 //connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'epignosis-library');
+$db = mysqli_connect('localhost', 'root', '', 'school-library');
 
 // Register user
 if (isset($_POST['reg_user'])) {

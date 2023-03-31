@@ -16,7 +16,7 @@ include ('server.php');
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Epignosis Library</title>
+		<title> Library</title>
 		<meta charset="UTF-8">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -127,7 +127,7 @@ include ('server.php');
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
 
 	<div class="w3-display-middle msg">
-		<h1 class=" w3-animate-top">Welcome to Epignosis library <?php echo $_SESSION['username']; ?></h1>
+		<h1 class=" w3-animate-top">Welcome to our elibrary <?php echo $_SESSION['username']; ?></h1>
 		<hr class="w3-border-grey" style="margin:auto;width:40%">
 		<p class="w3-large w3-center"> <a href="books.php" class="bold">📚 Click here to browse all available books! 📚</a></p>
 	</div>
